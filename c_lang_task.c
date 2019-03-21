@@ -7,12 +7,15 @@
 #define endl printf("\n"); 
 
 void print_stars(short);
+// void write_nils_to_head_file_with_deleting(const char*);
 
 int main(void) {
 	TEST_memcpy_and_memset();
 	endl;
 	endl;
 	TEST_read_i_string_from_file();
+
+	// write_nils_to_head_file_with_deleting("test.txt");
 
 	system("pause");
 	return 0;
@@ -181,7 +184,7 @@ void TEST_memcpy_and_memset(void) {
 	memset(array_of_char, 0x01, sizeof(char) * 80);
 	for (int i = 0; i < 40; i++) {
 		memset(array_of_int + i, 0x00, 3);
-		memset(array_of_int + 1, 0x01, 1);
+		memset(array_of_int + i, 0x01, 1);
 	}
 	memset(array_of_double, 0x0, sizeof(double) * 20);
 
@@ -272,3 +275,15 @@ void TEST_read_i_string_from_file(void) {
 
 	free(out_str);
 }
+
+//void write_nils_to_head_file_with_deleting(const char* full_fname) {
+//	FILE *main_file = fopen(full_fname, "r+b");
+//	if (main_file == NULL) {
+//		printf("Error");
+//		return;
+//	}
+//	fseek(main_file, 0, SEEK_SET);
+//	unsigned char byte = 0x00;
+//	fputc(byte, main_file);
+//	fclose(main_file);
+//}
